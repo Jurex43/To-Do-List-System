@@ -114,7 +114,7 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
         {/* Modal Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-100 dark:border-neutral-800">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/50 text-[#16A34A] dark:text-emerald-400 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-950/50 text-[#2563EB] dark:text-blue-400 flex items-center justify-center">
               <User className="w-4 h-4" />
             </div>
             <div>
@@ -263,7 +263,7 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
             <button
               type="submit"
               disabled={isSaving}
-              className="flex items-center gap-1.5 px-5 py-2 text-xs font-semibold rounded-xl bg-[#16A34A] hover:bg-[#15803D] text-white shadow-sm shadow-emerald-600/20 transition-all cursor-pointer disabled:opacity-50"
+              className="flex items-center gap-1.5 px-5 py-2 text-xs font-bold rounded-xl bg-gradient-to-r from-[#2563EB] to-[#4F46E5] hover:from-[#1D4ED8] hover:to-[#4338CA] text-white shadow-sm shadow-blue-600/20 transition-all cursor-pointer disabled:opacity-50"
             >
               {isSaving ? (
                 <span>Saving...</span>

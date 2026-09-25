@@ -121,10 +121,18 @@ export default function App() {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
     try {
       const stored = localStorage.getItem(THEME_STORAGE_KEY);
+      let initialDark = false;
       if (stored !== null) {
-        return stored === 'true';
+        initialDark = stored === 'true';
+      } else {
+        initialDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       }
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (initialDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      return initialDark;
     } catch {
       return false;
     }
@@ -449,32 +457,34 @@ export default function App() {
   if (!authSession.isAuthenticated) {
     const authHeaders: Record<AuthView, { heading: string; subtitle: string }> = {
       login: {
-        heading: 'Welcome back!',
-        subtitle: 'Log in to your account and keep your plans on track.',
+        heading: 'Welcome Back!',
+        subtitle: 'Log in to your account and continue your journey.',
       },
       register: {
-        heading: 'Create your account',
-        subtitle: 'Start organizing your tasks with TodoList.',
+        heading: 'Create an Account',
+        subtitle: 'Start your journey and achieve more with Lift.',
       },
       'forgot-password': {
-        heading: 'Forgot your password?',
-        subtitle: "Enter your email or phone and we'll help you reset your password.",
+        heading: 'Reset Password',
+        subtitle: "Enter your email and we'll help you reset your password.",
       },
       'reset-password': {
-        heading: 'Create a new password',
-        subtitle: 'Choose a secure password for your TodoList account.',
+        heading: 'Create New Password',
+        subtitle: 'Choose a secure password for your Lift account.',
       },
     };
 
     const currentHeader = authHeaders[authView];
 
     return (
-      <div className="min-h-screen bg-[#F8FAF8] dark:bg-[#0B1310]">
+      <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B1120]">
         <AuthLayout
           heading={currentHeader.heading}
           subtitle={currentHeader.subtitle}
           isDarkMode={isDarkMode}
           onToggleTheme={() => setIsDarkMode(!isDarkMode)}
+          currentView={authView}
+          onNavigateAuth={setAuthView}
         >
           {authView === 'login' && (
             <LoginPage

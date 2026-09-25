@@ -122,7 +122,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({
         {/* Username Input */}
         <AuthInput
           id="login-identifier"
-          label="Username"
+          label="Username or Email"
           type="text"
           value={identifier}
           onChange={(e) => {
@@ -130,7 +130,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({
             if (identifierError) setIdentifierError('');
             if (formError) setFormError('');
           }}
-          placeholder="e.g. Jurex43"
+          placeholder="Username or Email"
           autoComplete="username"
           autoFocus
           error={identifierError}
@@ -148,7 +148,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({
             if (passwordError) setPasswordError('');
             if (formError) setFormError('');
           }}
-          placeholder="Enter your password"
+          placeholder="Password"
           autoComplete="current-password"
           error={passwordError}
           disabled={isLoading}
@@ -161,7 +161,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({
               type="checkbox"
               checked={rememberMe}
               onChange={(e) => setRememberMe(e.target.checked)}
-              className="w-4 h-4 rounded border-slate-300 dark:border-slate-700 text-[#16A34A] focus:ring-[#16A34A] accent-[#16A34A] cursor-pointer"
+              className="w-4 h-4 rounded border-slate-300 dark:border-slate-700 text-[#2563EB] focus:ring-[#2563EB] accent-[#2563EB] cursor-pointer"
             />
             <span>Remember me</span>
           </label>
@@ -169,37 +169,33 @@ export const LoginPage: React.FC<LoginPageProps> = ({
           <button
             type="button"
             onClick={() => onNavigateAuth('forgot-password')}
-            className="text-xs font-semibold text-[#16A34A] dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors cursor-pointer"
+            className="text-xs font-semibold text-[#2563EB] dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors cursor-pointer"
           >
             Forgot password?
           </button>
         </div>
 
         {/* Primary Action Button: "Log In ->" */}
-        <div className="pt-0.5">
+        <div className="pt-1">
           <AuthButton
             isLoading={isLoading}
             loadingText="Logging in..."
             type="submit"
           >
-            <span className="flex items-center justify-center gap-1.5">
+            <span className="flex items-center justify-center gap-2 text-base font-bold">
               <span>Log In</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 stroke-[2.5]" />
             </span>
           </AuthButton>
         </div>
       </form>
 
-      {/* Bottom Switch: "Don't have an account? Register" */}
-      <div className="pt-2 text-center text-xs text-slate-500 dark:text-slate-400">
-        <span>Don&apos;t have an account? </span>
-        <button
-          type="button"
-          onClick={() => onNavigateAuth('register')}
-          className="font-bold text-[#16A34A] dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 hover:underline cursor-pointer"
-        >
-          Register
-        </button>
+      {/* Subtle Divider: "or" */}
+      <div className="relative flex items-center justify-center py-2">
+        <div className="w-full border-t border-slate-200 dark:border-slate-800" />
+        <span className="absolute px-3 bg-white dark:bg-[#0B1120] text-xs text-slate-400 font-normal">
+          or
+        </span>
       </div>
     </div>
   );

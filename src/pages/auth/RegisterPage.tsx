@@ -204,7 +204,7 @@ export const RegisterPage: React.FC<RegisterPageProps> = ({
                 setAgreeTerms(e.target.checked);
                 if (termsError) setTermsError('');
               }}
-              className="w-4 h-4 rounded border-slate-300 dark:border-slate-700 text-[#16A34A] focus:ring-[#16A34A] accent-[#16A34A] cursor-pointer shrink-0"
+              className="w-4 h-4 rounded border-slate-300 dark:border-slate-700 text-[#2563EB] focus:ring-[#2563EB] accent-[#2563EB] cursor-pointer shrink-0"
             />
             <span className="leading-snug">
               I agree to the Terms of Service & Privacy Policy
@@ -231,7 +231,7 @@ export const RegisterPage: React.FC<RegisterPageProps> = ({
         <button
           type="button"
           onClick={() => onNavigateAuth('login')}
-          className="font-bold text-[#16A34A] dark:text-emerald-400 hover:underline cursor-pointer"
+          className="font-bold text-[#2563EB] dark:text-blue-400 hover:underline cursor-pointer"
         >
           Sign in
         </button>

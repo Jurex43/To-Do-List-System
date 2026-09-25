@@ -57,14 +57,14 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
   return (
     <div className="space-y-8 animate-in fade-in duration-200">
       {/* 1. Welcome Section */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 bg-gradient-to-br from-emerald-50/70 via-white to-[#F8FAF8] dark:from-emerald-950/20 dark:via-slate-900 dark:to-slate-900 rounded-3xl border border-emerald-100 dark:border-emerald-950 shadow-sm">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 bg-gradient-to-br from-blue-50/70 via-white to-[#F8FAFC] dark:from-blue-950/20 dark:via-slate-900 dark:to-slate-900 rounded-3xl border border-blue-100 dark:border-blue-950 shadow-sm">
         <div>
           <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
             <span>{getGreeting()}</span>
-            <span className="text-2xl animate-pulse">🌱</span>
+            <span className="text-2xl animate-pulse">✨</span>
           </h1>
           <p className="mt-1 text-sm sm:text-base text-slate-600 dark:text-slate-400">
-            Welcome to <span className="font-bold text-[#16A34A] dark:text-emerald-400">TodoList</span>. You have{' '}
+            Welcome to <span className="font-bold text-[#2563EB] dark:text-blue-400">Tasks</span>. You have{' '}
             <span className="font-bold text-slate-900 dark:text-white font-mono tabular-nums">
               {stats.pending}
             </span>{' '}
@@ -75,7 +75,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         <button
           type="button"
           onClick={onOpenCreateTask}
-          className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-bold text-white bg-[#16A34A] hover:bg-[#15803D] active:bg-[#166534] rounded-2xl shadow-[0_2px_10px_rgba(22,163,74,0.3)] transition-all whitespace-nowrap cursor-pointer shrink-0 active:scale-95"
+          className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-[#2563EB] to-[#4F46E5] hover:from-[#1D4ED8] hover:to-[#4338CA] rounded-2xl shadow-[0_4px_12px_rgba(37,99,235,0.25)] transition-all whitespace-nowrap cursor-pointer shrink-0 active:scale-95"
         >
           <Plus className="w-4 h-4 stroke-[3]" />
           <span>Add Task</span>

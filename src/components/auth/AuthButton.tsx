@@ -27,11 +27,11 @@ export const AuthButton: React.FC<AuthButtonProps> = ({
   onClick,
   className = '',
 }) => {
-  const baseStyles = 'w-full py-3.5 px-5 rounded-2xl text-sm font-bold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm active:scale-[0.99]';
+  const baseStyles = 'w-full py-3.5 sm:py-4 px-6 rounded-xl sm:rounded-2xl text-base font-bold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm active:scale-[0.99]';
 
   const variants = {
-    primary: 'bg-[#16A34A] hover:bg-[#15803D] active:bg-[#166534] text-white shadow-[0_4px_14px_0_rgba(22,163,74,0.39)] hover:shadow-[0_6px_20px_rgba(22,163,74,0.23)] disabled:bg-emerald-400 dark:disabled:bg-emerald-800 disabled:cursor-not-allowed',
-    secondary: 'bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/40 dark:hover:bg-emerald-900/50 text-[#16A34A] dark:text-emerald-300 disabled:opacity-50 disabled:cursor-not-allowed',
+    primary: 'bg-gradient-to-r from-[#2563EB] via-[#3B82F6] to-[#6366F1] hover:from-[#1D4ED8] hover:to-[#4F46E5] active:opacity-95 text-white shadow-[0_10px_25px_-5px_rgba(59,130,246,0.35)] hover:shadow-[0_12px_28px_-4px_rgba(99,102,241,0.4)] disabled:opacity-60 disabled:cursor-not-allowed',
+    secondary: 'bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/40 dark:hover:bg-blue-900/50 text-[#2563EB] dark:text-blue-300 disabled:opacity-50 disabled:cursor-not-allowed',
     outline: 'border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 disabled:opacity-50 disabled:cursor-not-allowed',
   };
 

@@ -36,7 +36,7 @@ export const ProductivityOverview: React.FC<ProductivityOverviewProps> = ({
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-neutral-100 dark:border-neutral-800">
         <div>
           <h2 className="text-base font-semibold text-neutral-900 dark:text-white flex items-center gap-2">
-            <TrendingUp className="w-4 h-4 text-[#16A34A] dark:text-emerald-400" />
+            <TrendingUp className="w-4 h-4 text-[#2563EB] dark:text-blue-400" />
             Productivity Overview
           </h2>
           <p className="text-sm text-neutral-500 dark:text-neutral-400 mt-0.5">
@@ -46,14 +46,14 @@ export const ProductivityOverview: React.FC<ProductivityOverviewProps> = ({
 
         <div className="flex items-center gap-4 text-sm font-medium">
           <div className="flex items-center gap-1.5 text-neutral-600 dark:text-neutral-400">
-            <CheckCircle2 className="w-4 h-4 text-[#16A34A] dark:text-emerald-400" />
+            <CheckCircle2 className="w-4 h-4 text-[#2563EB] dark:text-blue-400" />
             <span>Completed:</span>
             <span className="font-mono tabular-nums text-neutral-900 dark:text-white font-bold">
               {completed} / {total}
             </span>
           </div>
 
-          <div className="px-2.5 py-1 bg-emerald-50 dark:bg-emerald-950/60 rounded-lg text-[#16A34A] dark:text-emerald-300 font-mono tabular-nums text-xs font-bold">
+          <div className="px-2.5 py-1 bg-blue-50 dark:bg-blue-950/60 rounded-lg text-[#2563EB] dark:text-blue-300 font-mono tabular-nums text-xs font-bold">
             {rate}%
           </div>
         </div>
@@ -63,7 +63,7 @@ export const ProductivityOverview: React.FC<ProductivityOverviewProps> = ({
       <div className="mt-4">
         <div className="w-full h-2.5 bg-neutral-100 dark:bg-neutral-800 rounded-full overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-emerald-500 to-[#16A34A] transition-all duration-500 ease-out rounded-full"
+            className="h-full bg-gradient-to-r from-[#38BDF8] via-[#2563EB] to-[#6366F1] transition-all duration-500 ease-out rounded-full shadow-xs"
             style={{ width: `${Math.min(Math.max(rate, 0), 100)}%` }}
           />
         </div>

@@ -106,7 +106,7 @@ export const Header: React.FC<HeaderProps> = ({
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
             placeholder="Search tasks..."
-            className="w-full pl-9 pr-8 py-1.5 text-sm bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 rounded-xl border border-transparent focus:border-[#16A34A] focus:bg-white dark:focus:bg-slate-900 focus:outline-none transition-all"
+            className="w-full pl-9 pr-8 py-1.5 text-sm bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 rounded-xl border border-transparent focus:border-[#2563EB] focus:ring-1 focus:ring-[#2563EB] focus:bg-white dark:focus:bg-slate-900 focus:outline-none transition-all"
           />
           {searchQuery && (
             <button
@@ -123,7 +123,7 @@ export const Header: React.FC<HeaderProps> = ({
         <button
           type="button"
           onClick={onOpenCreateTask}
-          className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs md:text-sm font-semibold text-white bg-[#16A34A] hover:bg-[#15803D] active:bg-[#166534] rounded-xl shadow-[0_2px_8px_rgba(22,163,74,0.25)] transition-all whitespace-nowrap cursor-pointer active:scale-95"
+          className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs md:text-sm font-semibold text-white bg-gradient-to-r from-[#2563EB] to-[#4F46E5] hover:from-[#1D4ED8] hover:to-[#4338CA] rounded-xl shadow-[0_4px_12px_rgba(37,99,235,0.25)] transition-all whitespace-nowrap cursor-pointer active:scale-95"
         >
           <Plus className="w-4 h-4 stroke-[2.5]" />
           <span className="hidden sm:inline">Add Task</span>

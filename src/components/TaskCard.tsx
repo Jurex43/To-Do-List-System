@@ -86,8 +86,8 @@ export const TaskCard: React.FC<TaskCardProps> = ({
           aria-label={task.completed ? 'Mark task as pending' : 'Mark task as completed'}
           className={`mt-0.5 w-5 h-5 rounded-md border flex items-center justify-center transition-colors cursor-pointer shrink-0 ${
             task.completed
-              ? 'bg-[#16A34A] border-[#16A34A] text-white shadow-xs'
-              : 'border-slate-300 dark:border-slate-600 hover:border-[#16A34A] bg-white dark:bg-slate-900'
+              ? 'bg-[#2563EB] border-[#2563EB] text-white shadow-xs'
+              : 'border-slate-300 dark:border-slate-600 hover:border-[#2563EB] bg-white dark:bg-slate-900'
           }`}
         >
           {task.completed && <Check className="w-3.5 h-3.5 stroke-[3]" />}
@@ -101,7 +101,7 @@ export const TaskCard: React.FC<TaskCardProps> = ({
               className={`text-sm sm:text-base font-semibold cursor-pointer select-none transition-colors ${
                 task.completed
                   ? 'line-through text-slate-400 dark:text-slate-500'
-                  : 'text-slate-900 dark:text-white hover:text-[#16A34A] dark:hover:text-emerald-400'
+                  : 'text-slate-900 dark:text-white hover:text-[#2563EB] dark:hover:text-blue-400'
               }`}
             >
               {task.title}

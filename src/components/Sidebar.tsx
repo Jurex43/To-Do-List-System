@@ -136,12 +136,36 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {/* Brand Header */}
         <div className="flex items-center justify-between h-16 px-6 border-b border-slate-200 dark:border-slate-800">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-[#16A34A] flex items-center justify-center text-white shadow-xs">
-              <Check className="w-5 h-5 stroke-[3]" />
+            <div className="w-8 h-8 shrink-0 flex items-center justify-center filter drop-shadow-xs">
+              <svg viewBox="0 0 48 48" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="sidebarLiftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#38BDF8" />
+                    <stop offset="45%" stopColor="#2563EB" />
+                    <stop offset="100%" stopColor="#6366F1" />
+                  </linearGradient>
+                </defs>
+                <rect 
+                  x="8" 
+                  y="8" 
+                  width="32" 
+                  height="32" 
+                  rx="9" 
+                  transform="rotate(45 24 24)" 
+                  fill="url(#sidebarLiftGrad)" 
+                />
+                <path 
+                  d="M17 24.5L22 29.5L31 19" 
+                  stroke="white" 
+                  strokeWidth="4" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                />
+              </svg>
             </div>
             <div>
               <span className="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-                TodoList
+                Tasks
               </span>
             </div>
           </div>
@@ -170,19 +194,19 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   onClick={() => handleItemClick(item.id)}
                   className={`w-full flex items-center justify-between px-3 py-2 text-sm font-medium rounded-xl transition-colors cursor-pointer ${
                     isActive
-                      ? 'bg-emerald-50 dark:bg-emerald-950/60 text-[#16A34A] dark:text-emerald-400 font-bold'
+                      ? 'bg-blue-50 dark:bg-blue-950/60 text-[#2563EB] dark:text-blue-400 font-bold'
                       : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <Icon className={`w-4 h-4 ${isActive ? 'text-[#16A34A] dark:text-emerald-400' : 'text-slate-400'}`} />
+                    <Icon className={`w-4 h-4 ${isActive ? 'text-[#2563EB] dark:text-blue-400' : 'text-slate-400'}`} />
                     <span>{item.label}</span>
                   </div>
                   {item.badge !== null && (
                     <span
                       className={`text-xs font-mono tabular-nums px-2 py-0.5 rounded-full ${
                         isActive
-                          ? 'bg-emerald-100 dark:bg-emerald-900/60 text-[#16A34A] dark:text-emerald-300 font-bold'
+                          ? 'bg-blue-100 dark:bg-blue-900/60 text-[#2563EB] dark:text-blue-300 font-bold'
                           : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
                       }`}
                     >
@@ -211,12 +235,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     onClick={() => handleItemClick(cat.id)}
                     className={`w-full flex items-center justify-between px-3 py-2 text-sm font-medium rounded-xl transition-colors cursor-pointer ${
                       isActive
-                        ? 'bg-emerald-50 dark:bg-emerald-950/60 text-[#16A34A] dark:text-emerald-400 font-bold'
+                        ? 'bg-blue-50 dark:bg-blue-950/60 text-[#2563EB] dark:text-blue-400 font-bold'
                         : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
                     }`}
                   >
                     <div className="flex items-center gap-3">
-                      <Icon className={`w-4 h-4 ${isActive ? 'text-[#16A34A] dark:text-emerald-400' : 'text-slate-400'}`} />
+                      <Icon className={`w-4 h-4 ${isActive ? 'text-[#2563EB] dark:text-blue-400' : 'text-slate-400'}`} />
                       <span>{cat.label}</span>
                     </div>
                     <span className="text-xs font-mono tabular-nums text-slate-400 dark:text-slate-500">
@@ -234,7 +258,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               onClick={() => handleItemClick('settings')}
               className={`w-full flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-xl transition-colors cursor-pointer ${
                 currentView === 'settings'
-                  ? 'bg-emerald-50 dark:bg-emerald-950/60 text-[#16A34A] dark:text-emerald-400 font-bold'
+                  ? 'bg-blue-50 dark:bg-blue-950/60 text-[#2563EB] dark:text-blue-400 font-bold'
                   : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
@@ -267,7 +291,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             className="w-full flex items-center gap-3 p-1.5 rounded-xl hover:bg-slate-200/60 dark:hover:bg-slate-800/80 transition-colors text-left cursor-pointer group"
             title="Click to edit profile & avatar"
           >
-            <div className="relative w-9 h-9 rounded-full overflow-hidden ring-2 ring-emerald-500/30 group-hover:ring-[#16A34A] bg-slate-200 dark:bg-slate-800 flex items-center justify-center shrink-0 transition-all">
+            <div className="relative w-9 h-9 rounded-full overflow-hidden ring-2 ring-blue-500/30 group-hover:ring-[#2563EB] bg-slate-200 dark:bg-slate-800 flex items-center justify-center shrink-0 transition-all">
               <img
                 src={currentUser?.avatar || avatarImg}
                 alt={currentUser?.name || 'User'}
@@ -289,7 +313,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               </span>
             </div>
             <div className="min-w-0 flex-1">
-              <p className="text-sm font-bold text-slate-900 dark:text-white truncate group-hover:text-[#16A34A] dark:group-hover:text-emerald-400 transition-colors">
+              <p className="text-sm font-bold text-slate-900 dark:text-white truncate group-hover:text-[#2563EB] dark:group-hover:text-blue-400 transition-colors">
                 {currentUser?.name || 'My Account'}
               </p>
               <p className="text-xs text-slate-500 dark:text-slate-400 truncate">

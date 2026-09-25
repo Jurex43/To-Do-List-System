@@ -1,198 +1,287 @@
 /**
  * @file src/components/auth/AuthLayout.tsx
- * @description Premium SaaS Landing Page & Split-Screen Authentication Layout for TodoList.
- * Matches the user-provided reference design pixel-for-pixel:
- * - Left Side: Branding, Tagline "Plan • Focus • Achieve", Headline with highlighted "daily tasks.",
- *   3 feature cards ("Easy to Use", "Boost Productivity", "Secure & Reliable"), realistic workspace
- *   scene with laptop previewing TodoList and motivational quote at bottom.
- * - Right Side: Clean white glassmorphism card, rounded corners (16-24px), soft shadows,
- *   TodoList logo, "Welcome back!" heading, and theme switcher.
+ * @description Pixel-perfect replication of the Lift SaaS split-screen landing & auth page:
+ * - Left Side: High-res scenic sunrise mountain illustration with backpacker hero,
+ *   Lift logo with "Plan • Focus • Achieve", "Small Tasks Big Progress" headline,
+ *   3 vertical feature badges (Organize, Stay Focused, Achieve More), and "Better Habits Brighter Tomorrow" brush signature.
+ * - Right Side: Clean aesthetic auth card with top right "Don't have an account? Sign Up" navigation,
+ *   centered Lift logo, "Welcome Back!" heading, and smooth terms footer.
  */
 
 import React from 'react';
 import { 
   Check, 
+  Calendar, 
+  BarChart2, 
   Sun, 
-  Moon, 
-  CheckCircle, 
-  Zap, 
-  ShieldCheck, 
-  Sparkles 
+  Moon
 } from 'lucide-react';
 import { TodoListLogo } from './TodoListLogo';
-import { LandingMockupDesk } from './LandingMockupDesk';
+import heroBgImage from '../../assets/images/lift_hero_mountain_sunrise_1790335846748.jpg';
+import { AuthView } from '../../types';
 
 interface AuthLayoutProps {
   children: React.ReactNode;
-  heading: string;
-  subtitle: string;
+  heading?: string;
+  subtitle?: string;
   isDarkMode: boolean;
   onToggleTheme: () => void;
+  currentView?: AuthView;
+  onNavigateAuth?: (view: AuthView) => void;
 }
 
 export const AuthLayout: React.FC<AuthLayoutProps> = ({
   children,
-  heading,
-  subtitle,
+  heading = 'Welcome Back!',
+  subtitle = 'Log in to your account and continue your journey.',
   isDarkMode,
   onToggleTheme,
+  currentView = 'login',
+  onNavigateAuth,
 }) => {
+  const isRegister = currentView === 'register';
+
   return (
-    <div className="h-screen w-full flex flex-col lg:flex-row bg-[#F8FAF8] dark:bg-[#0B1310] text-[#0F172A] dark:text-[#F1F5F9] transition-colors relative overflow-hidden font-sans">
+    <div className="min-h-screen w-full flex flex-col lg:flex-row bg-[#F8FAFC] dark:bg-[#0B1120] text-slate-900 dark:text-slate-100 font-sans selection:bg-blue-500 selection:text-white">
       
-      {/* Subtle background ambient nature organic curves */}
-      <div className="absolute top-0 right-0 w-[550px] h-[550px] bg-gradient-to-bl from-emerald-100/40 via-emerald-50/20 to-transparent dark:from-emerald-950/20 dark:via-transparent rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-green-100/30 via-emerald-50/10 to-transparent dark:from-emerald-950/15 dark:via-transparent rounded-full blur-3xl pointer-events-none" />
-
       {/* ========================================================================= */}
-      {/* LEFT SIDE: BRANDING, MARKETING & REALISTIC WORKSPACE SECTION (Full Height) */}
+      {/* LEFT SIDE: SCENIC MOUNTAIN SUNRISE BRANDING & VALUE PROPOSITION HERO      */}
       {/* ========================================================================= */}
-      <div className="w-full lg:w-[56%] xl:w-[58%] h-full flex flex-col justify-between p-4 sm:p-6 lg:p-8 xl:p-10 border-b lg:border-b-0 lg:border-r border-emerald-100/70 dark:border-emerald-950/60 relative z-10 overflow-y-auto lg:overflow-hidden">
+      <div className="relative w-full lg:w-1/2 min-h-[540px] lg:min-h-screen flex flex-col justify-between p-6 sm:p-10 lg:p-12 xl:p-16 overflow-hidden select-none bg-[#11264E]">
         
-        {/* Top Branding Section */}
-        <div className="flex flex-col">
-          <div className="shrink-0">
-            <TodoListLogo size="md" showTagline={true} taglineText="Plan • Focus • Achieve" />
-          </div>
+        {/* Background Scenic Landscape Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 scale-100"
+          style={{ backgroundImage: `url(${heroBgImage})` }}
+        />
 
-          {/* Hero Headline Section */}
-          <div className="mt-4 sm:mt-5 max-w-xl shrink-0">
-            <h1 className="text-2xl sm:text-3xl xl:text-4xl font-extrabold tracking-tight text-[#0F172A] dark:text-white leading-[1.15]">
-              A simple way to manage your{' '}
-              <span className="text-[#16A34A] dark:text-[#22C55E] font-black underline decoration-emerald-300/40 dark:decoration-emerald-500/30 decoration-wavy decoration-2">
-                daily tasks.
+        {/* Cinematic Gradient Overlays for optimal contrast & typography clarity */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#11285A]/85 via-[#1E3A8A]/50 to-[#0B152B]/90" />
+        <div className="absolute inset-0 bg-radial-[circle_at_20%_20%] from-sky-400/20 via-transparent to-transparent pointer-events-none" />
+
+        {/* Top: Lift Logo with Tagline */}
+        <div className="relative z-10">
+          <div className="flex items-center gap-3">
+            {/* Diamond gradient checkmark badge */}
+            <div className="w-10 h-10 shrink-0 flex items-center justify-center filter drop-shadow-md">
+              <svg viewBox="0 0 48 48" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="heroLiftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#38BDF8" />
+                    <stop offset="45%" stopColor="#2563EB" />
+                    <stop offset="100%" stopColor="#6366F1" />
+                  </linearGradient>
+                </defs>
+                <rect 
+                  x="8" 
+                  y="8" 
+                  width="32" 
+                  height="32" 
+                  rx="9" 
+                  transform="rotate(45 24 24)" 
+                  fill="url(#heroLiftGrad)" 
+                />
+                <path 
+                  d="M17 24.5L22 29.5L31 19" 
+                  stroke="white" 
+                  strokeWidth="4" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                />
+              </svg>
+            </div>
+            <div>
+              <span className="text-3xl font-extrabold tracking-tight text-white font-sans">
+                Tasks
               </span>
-            </h1>
-
-            <p className="mt-2 text-xs sm:text-sm text-[#64748B] dark:text-slate-400 font-normal leading-relaxed">
-              Stay organized, be more productive, and turn your goals into real progress — one task at a time.
-            </p>
-          </div>
-
-          {/* 3 Feature Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 mt-4 max-w-xl shrink-0">
-            
-            {/* Feature 1: Easy to Use */}
-            <div className="p-2.5 sm:p-3 rounded-xl bg-white/85 dark:bg-slate-900/85 backdrop-blur-md border border-emerald-100/80 dark:border-emerald-950/80 shadow-[0_4px_16px_-4px_rgba(22,163,74,0.05)] hover:shadow-md transition-all">
-              <div className="w-7 h-7 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/60 dark:border-emerald-800/40 flex items-center justify-center text-[#16A34A] dark:text-emerald-400">
-                <CheckCircle className="w-3.5 h-3.5" />
-              </div>
-              <h3 className="mt-1.5 text-xs font-bold text-slate-900 dark:text-white">
-                Easy to Use
-              </h3>
-              <p className="mt-0.5 text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 leading-snug">
-                Simple and clean interface for everyone.
+              <p className="text-[12px] font-medium tracking-wide text-white/80 -mt-0.5">
+                Plan • Focus • Achieve
               </p>
             </div>
-
-            {/* Feature 2: Boost Productivity */}
-            <div className="p-2.5 sm:p-3 rounded-xl bg-white/85 dark:bg-slate-900/85 backdrop-blur-md border border-emerald-100/80 dark:border-emerald-950/80 shadow-[0_4px_16px_-4px_rgba(22,163,74,0.05)] hover:shadow-md transition-all">
-              <div className="w-7 h-7 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/60 dark:border-emerald-800/40 flex items-center justify-center text-[#16A34A] dark:text-emerald-400">
-                <Zap className="w-3.5 h-3.5 fill-emerald-500/20" />
-              </div>
-              <h3 className="mt-1.5 text-xs font-bold text-slate-900 dark:text-white">
-                Boost Productivity
-              </h3>
-              <p className="mt-0.5 text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 leading-snug">
-                Keep track, stay focused, get more done.
-              </p>
-            </div>
-
-            {/* Feature 3: Secure & Reliable */}
-            <div className="p-2.5 sm:p-3 rounded-xl bg-white/85 dark:bg-slate-900/85 backdrop-blur-md border border-emerald-100/80 dark:border-emerald-950/80 shadow-[0_4px_16px_-4px_rgba(22,163,74,0.05)] hover:shadow-md transition-all">
-              <div className="w-7 h-7 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/60 dark:border-emerald-800/40 flex items-center justify-center text-[#16A34A] dark:text-emerald-400">
-                <ShieldCheck className="w-3.5 h-3.5" />
-              </div>
-              <h3 className="mt-1.5 text-xs font-bold text-slate-900 dark:text-white">
-                Secure & Reliable
-              </h3>
-              <p className="mt-0.5 text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 leading-snug">
-                Your data is safe and always with you.
-              </p>
-            </div>
-
-          </div>
-
-          {/* Realistic Workspace Scene: Open Laptop with TodoList Dashboard, Desk & Notebook */}
-          <div className="mt-4 w-full max-w-xl min-h-0 flex-1">
-            <LandingMockupDesk />
           </div>
         </div>
 
-        {/* Motivational Quote at Bottom */}
-        <div className="pt-2 sm:pt-3 shrink-0">
-          <div className="flex items-center gap-2">
-            <span className="w-5 h-0.5 rounded-full bg-[#16A34A]" />
-            <p className="text-[11px] sm:text-xs font-medium italic text-slate-500 dark:text-slate-400">
-              &ldquo;Discipline today builds the freedom you want tomorrow.&rdquo;
+        {/* Center: Main Headline, Pitch & 3 Feature Items */}
+        <div className="relative z-10 my-auto py-8 sm:py-10 max-w-lg">
+          
+          {/* Headline */}
+          <div className="space-y-1">
+            <h1 className="text-4xl sm:text-5xl lg:text-[46px] xl:text-[54px] font-extrabold tracking-tight text-white leading-[1.08]">
+              Small Tasks
+            </h1>
+            <h2 className="text-4xl sm:text-5xl lg:text-[46px] xl:text-[54px] font-extrabold tracking-tight bg-gradient-to-r from-[#60A5FA] via-[#38BDF8] to-[#C084FC] bg-clip-text text-transparent leading-[1.08]">
+              Big Progress
+            </h2>
+          </div>
+
+          {/* Subtitle Description */}
+          <p className="mt-4 text-sm sm:text-base text-white/90 font-normal leading-relaxed max-w-md">
+            Tasks helps you organize your day, stay focused, and turn your goals into real progress. A simpler way to do more.
+          </p>
+
+          {/* 3 Feature Items (Vertical Stack matching reference image) */}
+          <div className="mt-8 space-y-4">
+            
+            {/* Feature 1: Organize */}
+            <div className="flex items-center gap-3.5">
+              <div className="w-10 h-10 rounded-xl bg-[#3B82F6] flex items-center justify-center text-white shadow-md shadow-blue-500/30 shrink-0">
+                <Check className="w-5 h-5 stroke-[2.5]" />
+              </div>
+              <div>
+                <h3 className="text-sm sm:text-[15px] font-bold text-white leading-tight">
+                  Organize
+                </h3>
+                <p className="text-xs text-white/80 leading-snug">
+                  Keep your tasks in one place.
+                </p>
+              </div>
+            </div>
+
+            {/* Feature 2: Stay Focused */}
+            <div className="flex items-center gap-3.5">
+              <div className="w-10 h-10 rounded-xl bg-[#10B981] flex items-center justify-center text-white shadow-md shadow-emerald-500/30 shrink-0">
+                <Calendar className="w-5 h-5 stroke-[2.2]" />
+              </div>
+              <div>
+                <h3 className="text-sm sm:text-[15px] font-bold text-white leading-tight">
+                  Stay Focused
+                </h3>
+                <p className="text-xs text-white/80 leading-snug">
+                  Manage your time effectively.
+                </p>
+              </div>
+            </div>
+
+            {/* Feature 3: Achieve More */}
+            <div className="flex items-center gap-3.5">
+              <div className="w-10 h-10 rounded-xl bg-[#8B5CF6] flex items-center justify-center text-white shadow-md shadow-purple-500/30 shrink-0">
+                <BarChart2 className="w-5 h-5 stroke-[2.2]" />
+              </div>
+              <div>
+                <h3 className="text-sm sm:text-[15px] font-bold text-white leading-tight">
+                  Achieve More
+                </h3>
+                <p className="text-xs text-white/80 leading-snug">
+                  Small steps lead to big results.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* Bottom Left: "Better Habits Brighter Tomorrow" with Brush Stroke */}
+        <div className="relative z-10 pt-4">
+          <div className="inline-block transform -rotate-3 select-none">
+            <p className="text-white font-serif italic text-lg sm:text-xl font-medium tracking-wide drop-shadow-sm">
+              Better Habits
             </p>
+            <div className="relative inline-block mt-0.5">
+              <p className="text-white font-serif italic text-lg sm:text-xl font-medium tracking-wide drop-shadow-sm">
+                Brighter Tomorrow
+              </p>
+              <svg 
+                className="w-full h-3.5 text-indigo-400 absolute -bottom-2 left-0 pointer-events-none drop-shadow-md" 
+                viewBox="0 0 160 14" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path 
+                  d="M2 9C45 2 115 3 158 9" 
+                  stroke="currentColor" 
+                  strokeWidth="3.5" 
+                  strokeLinecap="round" 
+                />
+              </svg>
+            </div>
           </div>
         </div>
 
       </div>
 
       {/* ========================================================================= */}
-      {/* RIGHT SIDE: PREMIUM AUTHENTICATION CARD SECTION                           */}
+      {/* RIGHT SIDE: AUTHENTICATION FORM (Login / Register / Recover)               */}
       {/* ========================================================================= */}
-      <div className="w-full lg:w-[44%] xl:w-[42%] h-full flex flex-col justify-between p-4 sm:p-6 lg:p-8 xl:p-10 relative z-10 bg-slate-50/50 dark:bg-slate-950/30 overflow-y-auto lg:overflow-hidden">
+      <div className="w-full lg:w-1/2 min-h-screen flex flex-col justify-between p-6 sm:p-10 lg:p-12 xl:p-14 relative bg-white dark:bg-[#0B1120] transition-colors">
         
-        {/* Top Header bar with Theme switch */}
-        <div className="flex items-center justify-between w-full max-w-md mx-auto shrink-0">
+        {/* Top Header: "Don't have an account? Sign Up" in the Top Right Corner */}
+        <div className="w-full flex items-center justify-between lg:justify-end gap-4 shrink-0">
           {/* Mobile-only logo */}
           <div className="lg:hidden">
             <TodoListLogo size="sm" />
           </div>
 
-          <div className="hidden lg:block">
-            {/* Desktop spacer */}
-          </div>
-
-          {/* Theme switcher toggle */}
-          <button
-            type="button"
-            onClick={onToggleTheme}
-            className="p-1.5 text-slate-400 hover:text-slate-800 dark:hover:text-white rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors cursor-pointer"
-            aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-            title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-          >
-            {isDarkMode ? (
-              <Sun className="w-4 h-4 text-amber-400" />
-            ) : (
-              <Moon className="w-4 h-4 text-slate-600" />
-            )}
-          </button>
-        </div>
-
-        {/* White Glassmorphism Card Container (Center Aligned, 16-24px rounded corners) */}
-        <div className="w-full max-w-[440px] mx-auto my-auto py-2">
-          <div className="bg-white/95 dark:bg-slate-900/90 backdrop-blur-xl p-5 sm:p-7 md:p-8 rounded-[22px] border border-emerald-100/80 dark:border-emerald-950/80 shadow-[0_16px_40px_rgba(0,0,0,0.05)] dark:shadow-[0_16px_40px_rgba(0,0,0,0.4)] transition-all">
-            
-            {/* Top Section inside Card */}
-            <div className="text-center mb-4 sm:mb-5">
-              <div className="flex justify-center mb-2 sm:mb-2.5">
-                <TodoListLogo size="md" />
+          <div className="flex items-center gap-4">
+            {onNavigateAuth && (
+              <div className="text-sm sm:text-base font-normal text-slate-600 dark:text-slate-300">
+                <span>{isRegister ? 'Already have an account? ' : "Don't have an account? "}</span>
+                <button
+                  type="button"
+                  onClick={() => onNavigateAuth(isRegister ? 'login' : 'register')}
+                  className="font-bold text-[#2563EB] hover:text-[#1D4ED8] dark:text-blue-400 hover:underline cursor-pointer transition-colors ml-1"
+                >
+                  {isRegister ? 'Log In' : 'Sign Up'}
+                </button>
               </div>
-              <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight text-[#0F172A] dark:text-white">
-                {heading || 'Welcome back!'}
-              </h2>
-              <p className="mt-1 text-xs text-[#64748B] dark:text-slate-400 leading-relaxed">
-                {subtitle || 'Log in to your account and keep your plans on track.'}
-              </p>
-            </div>
+            )}
 
-            {/* Form body */}
-            {children}
-
-          </div>
-
-          {/* Footer branding text */}
-          <div className="text-center pt-3 sm:pt-4 text-[11px] font-medium text-[#64748B] dark:text-slate-400">
-            <span>TodoList • Organize Today, Achieve Tomorrow</span>
+            {/* Theme Toggle Button */}
+            <button
+              type="button"
+              onClick={onToggleTheme}
+              className="p-2 text-slate-400 hover:text-slate-800 dark:hover:text-white rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+              aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+              title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              {isDarkMode ? (
+                <Sun className="w-5 h-5 text-amber-400" />
+              ) : (
+                <Moon className="w-5 h-5 text-slate-600" />
+              )}
+            </button>
           </div>
         </div>
 
-        {/* Bottom spacer */}
-        <div className="hidden lg:block h-1 shrink-0" />
+        {/* Center: Auth Card */}
+        <div className="w-full max-w-[460px] mx-auto my-auto py-6 sm:py-10">
+          
+          {/* Card Header with Logo, Welcome Back! and Subtitle */}
+          <div className="text-center mb-6 sm:mb-8">
+            <div className="flex justify-center mb-3.5 sm:mb-4">
+              <TodoListLogo size="xl" />
+            </div>
+            
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+              {heading}
+            </h2>
+            
+            <p className="mt-2 text-sm sm:text-base text-slate-500 dark:text-slate-400 leading-relaxed max-w-sm mx-auto">
+              {subtitle}
+            </p>
+          </div>
+
+          {/* Form Content */}
+          <div className="space-y-4">
+            {children}
+          </div>
+
+        </div>
+
+        {/* Bottom Footer: Legal Terms */}
+        <div className="text-center pt-4 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+          <p>
+            By continuing, you agree to our{' '}
+            <a href="#terms" className="text-[#2563EB] dark:text-blue-400 hover:underline font-medium">
+              Terms of Service
+            </a>{' '}
+            and{' '}
+            <a href="#privacy" className="text-[#2563EB] dark:text-blue-400 hover:underline font-medium">
+              Privacy Policy
+            </a>
+            .
+          </p>
+        </div>
 
       </div>
 

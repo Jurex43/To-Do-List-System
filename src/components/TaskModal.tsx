@@ -142,7 +142,7 @@ export const TaskModal: React.FC<TaskModalProps> = ({
                 if (errorMessage) setErrorMessage('');
               }}
               placeholder="e.g., Review project documentation"
-              className="w-full px-3.5 py-2 text-sm bg-neutral-50 dark:bg-neutral-800/80 text-neutral-900 dark:text-neutral-100 rounded-lg border border-neutral-300 dark:border-neutral-700 focus:border-indigo-500 focus:bg-white dark:focus:bg-neutral-900 focus:outline-none transition-colors"
+              className="w-full px-3.5 py-2 text-sm bg-neutral-50 dark:bg-neutral-800/80 text-neutral-900 dark:text-neutral-100 rounded-lg border border-neutral-300 dark:border-neutral-700 focus:border-[#16A34A] focus:ring-1 focus:ring-[#16A34A] focus:bg-white dark:focus:bg-neutral-900 focus:outline-none transition-colors"
             />
           </div>
 
@@ -157,7 +157,7 @@ export const TaskModal: React.FC<TaskModalProps> = ({
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Add key context, links, or notes..."
-              className="w-full px-3.5 py-2 text-sm bg-neutral-50 dark:bg-neutral-800/80 text-neutral-900 dark:text-neutral-100 rounded-lg border border-neutral-300 dark:border-neutral-700 focus:border-indigo-500 focus:bg-white dark:focus:bg-neutral-900 focus:outline-none transition-colors resize-none"
+              className="w-full px-3.5 py-2 text-sm bg-neutral-50 dark:bg-neutral-800/80 text-neutral-900 dark:text-neutral-100 rounded-lg border border-neutral-300 dark:border-neutral-700 focus:border-[#16A34A] focus:ring-1 focus:ring-[#16A34A] focus:bg-white dark:focus:bg-neutral-900 focus:outline-none transition-colors resize-none"
             />
           </div>
 
@@ -172,7 +172,7 @@ export const TaskModal: React.FC<TaskModalProps> = ({
                 id="task-category"
                 value={category}
                 onChange={(e) => setCategory(e.target.value as TaskCategory)}
-                className="w-full px-3 py-2 text-sm bg-neutral-50 dark:bg-neutral-800/80 text-neutral-900 dark:text-neutral-100 rounded-lg border border-neutral-300 dark:border-neutral-700 focus:border-indigo-500 focus:outline-none transition-colors"
+                className="w-full px-3 py-2 text-sm bg-neutral-50 dark:bg-neutral-800/80 text-neutral-900 dark:text-neutral-100 rounded-lg border border-neutral-300 dark:border-neutral-700 focus:border-[#16A34A] focus:ring-1 focus:ring-[#16A34A] focus:outline-none transition-colors"
               >
                 <option value="personal">Personal</option>
                 <option value="school">School</option>
@@ -190,7 +190,7 @@ export const TaskModal: React.FC<TaskModalProps> = ({
                 id="task-priority"
                 value={priority}
                 onChange={(e) => setPriority(e.target.value as PriorityLevel)}
-                className="w-full px-3 py-2 text-sm bg-neutral-50 dark:bg-neutral-800/80 text-neutral-900 dark:text-neutral-100 rounded-lg border border-neutral-300 dark:border-neutral-700 focus:border-indigo-500 focus:outline-none transition-colors"
+                className="w-full px-3 py-2 text-sm bg-neutral-50 dark:bg-neutral-800/80 text-neutral-900 dark:text-neutral-100 rounded-lg border border-neutral-300 dark:border-neutral-700 focus:border-[#16A34A] focus:ring-1 focus:ring-[#16A34A] focus:outline-none transition-colors"
               >
                 <option value="low">Low Priority</option>
                 <option value="medium">Medium Priority</option>
@@ -210,7 +210,7 @@ export const TaskModal: React.FC<TaskModalProps> = ({
                 type="date"
                 value={dueDate}
                 onChange={(e) => setDueDate(e.target.value)}
-                className="w-full pl-3.5 pr-10 py-2 text-sm bg-neutral-50 dark:bg-neutral-800/80 text-neutral-900 dark:text-neutral-100 rounded-lg border border-neutral-300 dark:border-neutral-700 focus:border-indigo-500 focus:outline-none transition-colors font-mono"
+                className="w-full pl-3.5 pr-10 py-2 text-sm bg-neutral-50 dark:bg-neutral-800/80 text-neutral-900 dark:text-neutral-100 rounded-lg border border-neutral-300 dark:border-neutral-700 focus:border-[#16A34A] focus:ring-1 focus:ring-[#16A34A] focus:outline-none transition-colors font-mono"
               />
               <Calendar className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400 pointer-events-none" />
             </div>
@@ -227,7 +227,7 @@ export const TaskModal: React.FC<TaskModalProps> = ({
             </button>
             <button
               type="submit"
-              className="px-5 py-2 text-sm font-semibold text-white bg-[#16A34A] hover:bg-[#15803D] active:bg-[#166534] rounded-xl shadow-[0_2px_8px_rgba(22,163,74,0.25)] transition-colors cursor-pointer"
+              className="px-5 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-[#2563EB] to-[#4F46E5] hover:from-[#1D4ED8] hover:to-[#4338CA] rounded-xl shadow-[0_4px_12px_rgba(37,99,235,0.25)] transition-colors cursor-pointer"
             >
               {isEditing ? 'Save Changes' : 'Create Task'}
             </button>

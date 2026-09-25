@@ -95,7 +95,7 @@ export const TasksView: React.FC<TasksViewProps> = ({
         <button
           type="button"
           onClick={onOpenCreateTask}
-          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-[#16A34A] hover:bg-[#15803D] active:bg-[#166534] rounded-xl shadow-[0_2px_8px_rgba(22,163,74,0.25)] transition-colors cursor-pointer self-start sm:self-auto"
+          className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-[#2563EB] to-[#4F46E5] hover:from-[#1D4ED8] hover:to-[#4338CA] rounded-xl shadow-[0_4px_12px_rgba(37,99,235,0.25)] transition-colors cursor-pointer self-start sm:self-auto"
         >
           <Plus className="w-4 h-4 stroke-[2.5]" />
           <span>New Task</span>
