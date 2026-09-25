@@ -1,0 +1,6 @@
+{
+  "name": "TodoList",
+  "description": "A simple way to manage your daily tasks. Plan • Focus • Achieve with modern productivity design.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
